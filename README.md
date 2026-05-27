@@ -79,6 +79,15 @@ Run both linting and formatting:
 ruff check . --fix && ruff format .
 ```
 
+### Run application
+
+This project uses the module API to run the application entry point configured in
+`./app/__main__.py`.
+
+```bash
+python -m app
+```
+
 ## Contributing
 
 If you notice any mistakes or have suggestions, I’m all ears. Feel free to [open an Issue
