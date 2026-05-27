@@ -9,6 +9,45 @@ This is not a product. It's how I work.
 
 You can use it too. Or just take ideas. That's why it's public.
 
+## Usage
+
+### Development setup
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Install `pip-tools`:
+
+```bash
+pip install pip-tools
+```
+
+Install development dependencies:
+
+```bash
+pip-compile requirements-dev.in
+pip-sync requirements-dev.txt
+```
+
+> `requirements-dev.in` includes development tools and project dependencies:
+>
+> ```txt
+> -r requirements.in
+>
+> pip-tools
+> ```
+
+Install production dependencies:
+
+```bash
+pip-compile requirements.in
+pip-sync requirements.txt
+```
+
 ## Contributing
 
 If you notice any mistakes or have suggestions, I’m all ears. Feel free to [open an Issue
