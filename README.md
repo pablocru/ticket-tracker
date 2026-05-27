@@ -79,6 +79,50 @@ Run both linting and formatting:
 ruff check . --fix && ruff format .
 ```
 
+### Run application
+
+#### CSV input
+
+The application reads the latest CSV file from:
+
+```txt
+data/input/
+```
+
+File naming convention:
+
+```txt
+tickets_YYYYMMDD_HHMMSS.csv
+```
+
+Example:
+
+```txt
+tickets_20260527_120000.csv
+```
+
+#### Run command
+
+This project uses Python module execution as the entrypoint defined in:
+
+```txt
+./app/__main__.py
+```
+
+Run the application:
+
+```bash
+python -m app
+```
+
+#### Logging
+
+Logs are written to:
+
+```txt
+data/logs/application.log
+```
+
 ## Contributing
 
 If you notice any mistakes or have suggestions, I’m all ears. Feel free to [open an Issue
