@@ -48,6 +48,37 @@ pip-compile requirements.in
 pip-sync requirements.txt
 ```
 
+### Code quality
+
+This project uses [Ruff](https://docs.astral.sh/ruff/), a fast Python linter and
+formatter, to keep the codebase consistent and clean.
+
+#### Useful commands
+
+Check for linting issues:
+
+```bash
+ruff check .
+```
+
+Automatically fix issues when possible:
+
+```bash
+ruff check . --fix
+```
+
+Format code:
+
+```bash
+ruff format .
+```
+
+Run both linting and formatting:
+
+```bash
+ruff check . --fix && ruff format .
+```
+
 ## Contributing
 
 If you notice any mistakes or have suggestions, I’m all ears. Feel free to [open an Issue
