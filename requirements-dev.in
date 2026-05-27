@@ -1,2 +1,4 @@
+-r requirements.in
+
 ruff
 pre-commit
