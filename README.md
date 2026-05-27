@@ -81,11 +81,46 @@ ruff check . --fix && ruff format .
 
 ### Run application
 
-This project uses the module API to run the application entry point configured in
-`./app/__main__.py`.
+#### CSV input
+
+The application reads the latest CSV file from:
+
+```txt
+data/input/
+```
+
+File naming convention:
+
+```txt
+tickets_YYYYMMDD_HHMMSS.csv
+```
+
+Example:
+
+```txt
+tickets_20260527_120000.csv
+```
+
+#### Run command
+
+This project uses Python module execution as the entrypoint defined in:
+
+```txt
+./app/__main__.py
+```
+
+Run the application:
 
 ```bash
 python -m app
+```
+
+#### Logging
+
+Logs are written to:
+
+```txt
+data/logs/application.log
 ```
 
 ## Contributing
