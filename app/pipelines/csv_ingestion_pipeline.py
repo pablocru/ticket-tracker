@@ -1,5 +1,5 @@
 import logging
-import time
+from time import perf_counter
 
 import pandas as pd
 
@@ -13,18 +13,23 @@ class CSVIngestionPipeline:
         self,
         reader: CSVReaderService,
     ) -> None:
-
         self._reader = reader
 
     def run(self) -> pd.DataFrame:
         logger.info("Starting CSV ingestion pipeline")
 
-        start = time.time()
-        df = self._reader.read_latest()
-        duration = time.time() - start
-        read_rows = df.shape[0]
+        start = perf_counter()
 
-        logger.info("CSV loaded successfully")
-        logger.debug("Read %d rows in %.2fs", read_rows, duration)
+        df = self._reader.read_latest()
+
+        logger.info(
+            "CSV loaded (%d rows, %d columns) in %.3fs",
+            len(df),
+            len(df.columns),
+            perf_counter() - start,
+        )
+
+        if df.empty:
+            logger.warning("CSV is empty")
 
         return df
