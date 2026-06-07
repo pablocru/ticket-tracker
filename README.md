@@ -13,40 +13,40 @@ You can use it too. Or just take ideas. That's why it's public.
 
 ### Development setup
 
-Create a virtual environment:
+This project uses `uv` for dependency and environment management.
+
+Python version is defined in `pyproject.toml` (see `requires-python`) and will be
+automatically handled by `uv` when syncing the project.
+
+Please refer to the installation guide for `uv`:
+<https://docs.astral.sh/uv/getting-started/installation/>
+
+Install dependencies:
 
 ```bash
-python -m venv .venv
+uv sync
+```
+
+This command automatically creates a `virtual environment` (if needed) and installs all
+project and development dependencies.
+
+You can optionally activate the environment manually:
+
+```bash
 source .venv/bin/activate
 ```
 
-Install `pip-tools`:
+> Useful if you prefer not to use `uv run` for every command (e.g. running ruff or the
+> application).
+
+Managing dependencies with `uv`:
 
 ```bash
-pip install pip-tools
+uv add <package>
+uv remove <package>
 ```
 
-Install development dependencies:
-
-```bash
-pip-compile requirements-dev.in
-pip-sync requirements-dev.txt
-```
-
-> `requirements-dev.in` includes development tools and project dependencies:
->
-> ```txt
-> -r requirements.in
->
-> pip-tools
-> ```
-
-Install production dependencies:
-
-```bash
-pip-compile requirements.in
-pip-sync requirements.txt
-```
+> Use `--dev` for development dependencies
 
 ### Code quality
 
@@ -58,25 +58,15 @@ formatter, to keep the codebase consistent and clean.
 Check for linting issues:
 
 ```bash
-ruff check .
+uv run ruff check .
 ```
 
-Automatically fix issues when possible:
-
-```bash
-ruff check . --fix
-```
+> Use `--fix` to automatically fix issues when possible.
 
 Format code:
 
 ```bash
-ruff format .
-```
-
-Run both linting and formatting:
-
-```bash
-ruff check . --fix && ruff format .
+uv run ruff format .
 ```
 
 ### Run application
@@ -112,7 +102,7 @@ This project uses Python module execution as the entrypoint defined in:
 Run the application:
 
 ```bash
-python -m app
+uv run python -m app
 ```
 
 #### Logging
